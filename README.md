@@ -8,57 +8,57 @@ This project focuses on analyzing customer reviews for mobile banking applicatio
 The analysis is structured to simulate real-world data engineering and analytics workflows, from data collection and robust preprocessing to advanced Natural Language Processing (NLP) for sentiment and thematic insights, secure data storage, and the generation of clear, data-driven recommendations.
 
 ## Business Objectives Addressed
-User Retention (Scenario 1): Identify and address issues causing user complaints, such as slow loading times during transfers, to improve user satisfaction and prevent churn.
+(1) User Retention (Scenario 1): Identify and address issues causing user complaints, such as slow loading times during transfers, to improve user satisfaction and prevent churn.
 
-Feature Enhancement (Scenario 2): Extract desired features and functionalities from user feedback to inform app development and maintain competitive advantage.
+(2) Feature Enhancement (Scenario 2): Extract desired features and functionalities from user feedback to inform app development and maintain competitive advantage.
 
-Complaint Management (Scenario 3): Cluster and track common complaints to guide the integration of AI chatbots and optimize customer support strategies for faster resolution.
+(3) Complaint Management (Scenario 3): Cluster and track common complaints to guide the integration of AI chatbots and optimize customer support strategies for faster resolution.
 
 ## Key Features
-Web Scraping: Automated collection of mobile banking app reviews, ratings, dates, and other metadata from the Google Play Store using google-play-scraper.
+=> Web Scraping: Automated collection of mobile banking app reviews, ratings, dates, and other metadata from the Google Play Store using google-play-scraper.
 
-Data Preprocessing: Robust cleaning pipeline to handle missing values, remove duplicates, normalize dates, and clean raw text for NLP readiness.
+=> Data Preprocessing: Robust cleaning pipeline to handle missing values, remove duplicates, normalize dates, and clean raw text for NLP readiness.
 
-Sentiment Analysis: Application of state-of-the-art NLP models (distilbert-base-uncased-finetuned-sst-2-english) to compute sentiment scores (positive, negative, neutral) for reviews.
+=> Sentiment Analysis: Application of state-of-the-art NLP models (distilbert-base-uncased-finetuned-sst-2-english) to compute sentiment scores (positive, negative, neutral) for reviews.
 
-Thematic Analysis: Identification of recurring themes and topics within reviews using TF-IDF and rule-based keyword matching to categorize user feedback into actionable areas (e.g., 'Account Access Issues', 'Transaction Performance', 'User Interface & Experience', 'Customer Support', 'Feature Requests', 'Security Concerns').
+=> Thematic Analysis: Identification of recurring themes and topics within reviews using TF-IDF and rule-based keyword matching to categorize user feedback into actionable areas (e.g., 'Account Access Issues', 'Transaction Performance', 'User Interface & Experience', 'Customer Support', 'Feature Requests', 'Security Concerns').
 
-Database Storage: Design and implementation of a relational database schema (Oracle/PostgreSQL) to store cleaned and processed review data, simulating enterprise data engineering practices.
+=> Database Storage: Design and implementation of a relational database schema (Oracle/PostgreSQL) to store cleaned and processed review data, simulating enterprise data engineering practices.
 
-Insights Generation & Visualization: Derivation of actionable insights, comparison of performance across different banks, and creation of visualizations (sentiment distribution, sentiment by bank, themes by bank) to present findings.
+=> Insights Generation & Visualization: Derivation of actionable insights, comparison of performance across different banks, and creation of visualizations (sentiment distribution, sentiment by bank, themes by bank) to present findings.
 
-Actionable Recommendations: Generation of specific, data-driven recommendations for app improvement based on identified pain points and satisfaction drivers.
+=> Actionable Recommendations: Generation of specific, data-driven recommendations for app improvement based on identified pain points and satisfaction drivers.
 
-Modular Design: Code structured into separate, reusable Python modules for clarity, maintainability, and scalability.
+=> Modular Design: Code structured into separate, reusable Python modules for clarity, maintainability, and scalability.
 
-Version Control: Git integration with dedicated branches for each task, promoting frequent commits and pull request workflows.
+=> Version Control: Git integration with dedicated branches for each task, promoting frequent commits and pull request workflows.
 
 ## Project Structure
 mobile_banking_reviews/
 ├── notebooks/
-│   └── mobile_banking_analysis.ipynb  # Jupyter Notebook for interactive development and presentation
+│   └── mobile_banking_analysis.ipynb       # Jupyter Notebook for interactive development and presentation
 ├── src/
-│   ├── data_collection.py      # Module for scraping reviews
-│   ├── preprocessing.py        # Module for data cleaning and normalization
-│   ├── sentiment_analysis.py   # Module for sentiment scoring using DistilBERT
-│   ├── thematic_analysis.py    # Module for keyword extraction and theme assignment
-│   ├── database_manager.py     # Module for database connection, schema, and CRUD operations
-│   └── insights_generator.py   # Module for generating insights, visualizations, and recommendations
+│   ├── data_collection.py                  # Module for scraping reviews
+│   ├── preprocessing.py                    # Module for data cleaning and normalization
+│   ├── sentiment_analysis.py               # Module for sentiment scoring using DistilBERT
+│   ├── thematic_analysis.py                # Module for keyword extraction and theme assignment
+│   ├── database_manager.py                 # Module for database connection, schema, and CRUD operations
+│   └── insights_generator.py               # Module for generating insights, visualizations, and recommendations
 ├── config/
-│   ├── app_config.py           # Stores application-specific configurations (App IDs, DB credentials)
-│   └── db_schema.py            # Defines SQL DDL for database tables (Banks, Reviews)
+│   ├── app_config.py                       # Stores application-specific configurations (App IDs, DB credentials)
+│   └── db_schema.py                        # Defines SQL DDL for database tables (Banks, Reviews)
 ├── data/
-│   ├── raw_reviews/            # Directory to store initially scraped raw CSV data
-│   └── processed_reviews/      # Directory to store cleaned and processed CSV data
+│   ├── raw_reviews/                        # Directory to store initially scraped raw CSV data
+│   └── processed_reviews/                  # Directory to store cleaned and processed CSV data
 ├── reports/
-│   ├── sentiment_distribution.png # Visualizations generated
+│   ├── sentiment_distribution.png          # Visualizations generated
 │   ├── sentiment_by_bank.png
 │   ├── themes_by_bank.png
-│   └── recommendations.txt     # Text file with actionable recommendations
-├── .gitignore                  # Specifies intentionally untracked files to ignore
-├── requirements.txt            # Lists all Python dependencies
-├── README.md                   # This file
-└── pipeline.log                # Log file for pipeline execution
+│   └── recommendations.txt                 # Text file with actionable recommendations
+├── .gitignore                              # Specifies intentionally untracked files to ignore
+├── requirements.txt                        # Lists all Python dependencies
+├── README.md                               # This file
+└── pipeline.log                            # Log file for pipeline execution
 
 ## Setup Instructions
 Follow these steps to set up and run the project:
@@ -84,9 +84,9 @@ pip install -r requirements.txt
 
 ### Note for Database Drivers:
 
-If DB_TYPE in config/app_config.py is set to 'oracle', ensure you have cx_Oracle installed. This often requires the Oracle Instant Client to be present on your system.
+=> If DB_TYPE in config/app_config.py is set to 'oracle', ensure you have cx_Oracle installed. This often requires the Oracle Instant Client to be present on your system.
 
-If DB_TYPE is set to 'postgresql', psycopg2-binary will be installed automatically from requirements.txt.
+=> If DB_TYPE is set to 'postgresql', psycopg2-binary will be installed automatically from requirements.txt.
 
 ### Download SpaCy Language Model:
 The en_core_web_sm model is used for text tokenization and lemmatization.
@@ -95,9 +95,9 @@ python -m spacy download en_core_web_sm
 
 ### Configure Application Settings (config/app_config.py):
 
-BANK_APPS: Crucially, replace the placeholder App IDs (com.cbe.mobilebanking, etc.) with the actual Google Play Store App IDs for the mobile banking applications you intend to scrape. You can find these IDs in the URL of the app's page on Google Play (e.g., https://play.google.com/store/apps/details?id=YOUR_APP_ID).
+=> BANK_APPS: Crucially, replace the placeholder App IDs (com.cbe.mobilebanking, etc.) with the actual Google Play Store App IDs for the mobile banking applications you intend to scrape. You can find these IDs in the URL of the app's page on Google Play (e.g., https://play.google.com/store/apps/details?id=YOUR_APP_ID).
 
-DB_CONFIG: Update the database connection details (username, password, host, port, database name/service name) to match your Oracle or PostgreSQL setup. Remember to never hardcode sensitive credentials in production environments.
+=> DB_CONFIG: Update the database connection details (username, password, host, port, database name/service name) to match your Oracle or PostgreSQL setup. Remember to never hardcode sensitive credentials in production environments.
 
 ### Ensure Database is Running:
 Make sure your Oracle or PostgreSQL database instance is running and accessible from your development environment.
