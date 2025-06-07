@@ -36,6 +36,7 @@ The analysis is structured to simulate real-world data engineering and analytics
 ## Project Structure
 mobile_banking_reviews/
 ├── notebooks/
+
 │   └── mobile_banking_analysis.ipynb       # Jupyter Notebook for interactive development and presentation
 ├── src/
 │   ├── data_collection.py                  # Module for scraping reviews
@@ -45,6 +46,7 @@ mobile_banking_reviews/
 │   ├── database_manager.py                 # Module for database connection, schema, and CRUD operations
 │   └── insights_generator.py               # Module for generating insights, visualizations, and recommendations
 ├── config/
+
 │   ├── app_config.py                       # Stores application-specific configurations (App IDs, DB credentials)
 │   └── db_schema.py                        # Defines SQL DDL for database tables (Banks, Reviews)
 ├── data/
@@ -66,15 +68,15 @@ Follow these steps to set up and run the project:
 ### Clone the Repository (if applicable):
 
 git clone <repository-url>
-cd mobile_banking_reviews
+cd KAIM_W3_Customer-satisfaction-with-mobile-banking-analysis
 
 ### Create and Activate a Virtual Environment:
 It's highly recommended to use a virtual environment to manage dependencies.
 
 python -m venv venv
-# On Windows:
+#On Windows:
 .\venv\Scripts\activate
-# On macOS/Linux:
+#On macOS/Linux:
 source venv/bin/activate
 
 ### Install Python Dependencies:
@@ -118,7 +120,7 @@ For step-by-step execution, exploration, and visualization:
 Start Jupyter Notebook/Lab from the project's root directory:
 
 jupyter notebook
-# or jupyter lab
+#or jupyter lab
 
 Navigate to the notebooks/ directory and open mobile_banking_analysis.ipynb.
 
