@@ -1,10 +1,11 @@
 --- Recommendations for CBE ---
-Overall Sentiment: 66.0% Positive, 23.0% Negative Reviews.
+Overall Sentiment: 68.8% Positive, 27.0% Negative Reviews.
 
-Top Pain Point: 'Transaction Performance' (19 negative mentions).
-  Recommendation: Investigate and optimize backend processes for transfers and payments to reduce delays. Provide real-time transaction status updates.
+Top Pain Point: 'Bug/Crash/Performance' (11 negative mentions).
+  Associated Keywords: fix, app, developer, great, option
 
-Top Satisfaction Driver: 'Transaction Performance' (16 positive mentions).
+Top Satisfaction Driver: 'Transaction Performance' (14 positive mentions).
+  Associated Keywords: fast, good, easy, reliable, fast reliable
   Recommendation: Highlight 'Transaction Performance' in marketing and continue to invest in improving these features.
 
 General Recommendation:
@@ -14,12 +15,14 @@ General Recommendation:
 
 
 --- Recommendations for BOA ---
-Overall Sentiment: 40.5% Positive, 45.0% Negative Reviews.
+Overall Sentiment: 43.0% Positive, 52.2% Negative Reviews.
 
-Top Pain Point: 'Transaction Performance' (40 negative mentions).
+Top Pain Point: 'Transaction Performance' (27 negative mentions).
+  Associated Keywords: app, slow, work, bank, transfer
   Recommendation: Investigate and optimize backend processes for transfers and payments to reduce delays. Provide real-time transaction status updates.
 
-Top Satisfaction Driver: 'Transaction Performance' (7 positive mentions).
+Top Satisfaction Driver: 'Transaction Performance' (5 positive mentions).
+  Associated Keywords: fast, fast transfer, fast reliable, transfer, reliable
   Recommendation: Highlight 'Transaction Performance' in marketing and continue to invest in improving these features.
 
 General Recommendation:
@@ -29,13 +32,15 @@ General Recommendation:
 
 
 --- Recommendations for DashenBank ---
-Overall Sentiment: 73.0% Positive, 19.2% Negative Reviews.
+Overall Sentiment: 74.8% Positive, 21.8% Negative Reviews.
 
-Top Pain Point: 'Transaction Performance' (26 negative mentions).
+Top Pain Point: 'Transaction Performance' (25 negative mentions).
+  Associated Keywords: slow, transaction, app, time, speed
   Recommendation: Investigate and optimize backend processes for transfers and payments to reduce delays. Provide real-time transaction status updates.
 
-Top Satisfaction Driver: 'Transaction Performance' (72 positive mentions).
-  Recommendation: Highlight 'Transaction Performance' in marketing and continue to invest in improving these features.
+Top Satisfaction Driver: 'User Interface & Experience' (56 positive mentions).
+  Associated Keywords: app, use, dashen, easy, easy use
+  Recommendation: Highlight 'User Interface & Experience' in marketing and continue to invest in improving these features.
 
 General Recommendation:
 - Implement a continuous feedback loop: regularly scrape and analyze reviews to identify emerging trends.

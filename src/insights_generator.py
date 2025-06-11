@@ -40,7 +40,11 @@ def plot_sentiment_distribution(df: pd.DataFrame, save_path: str = 'reports/sent
     sentiment_order = ['POSITIVE', 'NEUTRAL', 'NEGATIVE']
     df['sentiment_label'] = pd.Categorical(df['sentiment_label'], categories=sentiment_order, ordered=True)
 
-    sns.countplot(data=df, x='sentiment_label', palette='viridis', order=sentiment_order)
+    # --- Already fixed in previous interaction for countplot ---
+    sns.countplot(data=df, x='sentiment_label', hue='sentiment_label', palette='viridis', 
+                  order=sentiment_order, legend=False)
+    # --- End fixed countplot ---
+
     plt.title('Overall Sentiment Distribution of Mobile Banking App Reviews', fontsize=14)
     plt.xlabel('Sentiment', fontsize=12)
     plt.ylabel('Number of Reviews', fontsize=12)
@@ -57,12 +61,16 @@ def plot_sentiment_by_bank(df: pd.DataFrame, save_path: str = 'reports/sentiment
         logging.warning("DataFrame is empty for sentiment by bank plot.")
         return
 
-    # Calculate mean sentiment score, excluding 'Neutral' for a clearer positive/negative comparison if desired
-    # For now, let's include all to get a holistic average.
+    # Calculate mean sentiment score
     avg_sentiment = df.groupby('bank')['sentiment_score'].mean().sort_values(ascending=False)
     
     plt.figure(figsize=(10, 6))
-    sns.barplot(x=avg_sentiment.index, y=avg_sentiment.values, palette='coolwarm')
+    # --- FIX FOR DEPRECATION WARNING in barplot ---
+    # Assign the 'x' variable (bank names) to 'hue' and set legend=False
+    sns.barplot(x=avg_sentiment.index, y=avg_sentiment.values, hue=avg_sentiment.index, 
+                palette='coolwarm', legend=False)
+    # --- END FIX ---
+
     plt.title('Average Sentiment Score per Bank', fontsize=14)
     plt.xlabel('Bank', fontsize=12)
     plt.ylabel('Average Sentiment Score (0-1)', fontsize=12)
@@ -200,9 +208,11 @@ def generate_recommendations(df: pd.DataFrame) -> dict:
                     elif top_pain_point == 'User Interface & Experience':
                         rec_text += "  Recommendation: Prioritize fixing reported bugs and crashes. Conduct usability testing to improve navigation and overall app design.\n"
                     elif top_pain_point == 'Customer Support':
-                        rec_text += "  Recommendation: Improve response times for customer inquiries. Explore AI-driven chatbots for instant answers to common questions.\n"
+                        rec_text += "  Recommendation: Invest in additional support staff or enhance chatbot capabilities for common queries to improve response times and resolution rates.\n"
                     elif top_pain_point == 'Feature Requests':
-                        rec_text += "  Recommendation: Evaluate highly requested features for future development. Conduct user surveys to validate demand and prioritize.\n"
+                        rec_text += "  Recommendation: Evaluate highly requested features (even if negative feedback comes from lack of a feature) for future development based on user demand.\n"
+                    elif top_pain_point == 'Bug/Crash/Performance':
+                         rec_text += "  Recommendation: Conduct rigorous performance testing and debugging to eliminate frequent app crashes, freezing, and general instability.\n"
                     elif top_pain_point == 'Security Concerns':
                         rec_text += "  Recommendation: Clearly communicate security features and protocols to users. Enhance fraud detection mechanisms and educate users on safe practices.\n"
                 else:
@@ -227,7 +237,7 @@ def generate_recommendations(df: pd.DataFrame) -> dict:
                     keywords = get_top_keywords_for_theme(pos_reviews_bank, top_driver, 'processed_text', top_n=5)
                     if keywords:
                         rec_text += f"  Associated Keywords: {', '.join(keywords)}\n"
-                    rec_text += f"  Recommendation: Highlight '{top_driver}' in marketing and continue to invest in improving these features.\n"
+                    rec_text += f"  Recommendation: Highlight '{top_driver}' in marketing and continue to invest in improving these features to maintain competitive advantage.\n"
                 else:
                     rec_text += "\nNo specific themed satisfaction drivers identified from positive reviews.\n"
             else:
@@ -238,6 +248,8 @@ def generate_recommendations(df: pd.DataFrame) -> dict:
         rec_text += "- Implement a continuous feedback loop: regularly scrape and analyze reviews to identify emerging trends.\n"
         rec_text += "- Prioritize development efforts based on the severity and frequency of reported pain points.\n"
         rec_text += "- Engage with users who leave critical reviews to understand their issues better and demonstrate responsiveness.\n"
+        rec_text += "- Benchmark performance against competitors (via their app reviews) to identify areas for differentiation.\n"
+
 
         recommendations[bank] = rec_text.strip() + "\n" # Remove trailing newline
 
@@ -255,46 +267,40 @@ if __name__ == "__main__":
             "Great app, customer support is very responsive.",
             "Can't access my account, password reset not working.",
             "I wish they would add a budgeting feature. Good app though.",
-            "Smooth UI, easy to use, highly recommend.",
-            "Transactions are fast, very reliable.",
-            "Terrible support, never respond to emails. Very bad service.",
-            "Fingerprint login is a pain, keeps failing. Security concern.",
-            "Good design, but transfer limits are too low. Request new feature."
+            "This app is very secure and easy to use.",
+            "My transactions are pending for days, horrible service.",
+            "The dark mode feature would be awesome."
         ],
-        'processed_text': [
+        'processed_text': [ # Preprocessed text for TF-IDF input
             "login super slow crash frequently fix ui",
             "fast transfer ui confuse need update",
             "great app customer support responsive",
             "access account password reset work",
             "wish add budgeting feature good app",
-            "smooth ui easy use highly recommend",
-            "transaction fast reliable",
-            "terrible support never respond email bad service",
-            "fingerprint login pain keep fail security concern",
-            "good design transfer limit low request new feature"
+            "app secure easy use",
+            "transaction pending day horrible service",
+            "dark mode feature awesome"
         ],
-        'rating': [1, 3, 5, 1, 4, 5, 4, 2, 1, 3],
+        'rating': [1, 3, 5, 1, 4, 5, 2, 4],
         'date': [date(2023,1,1), date(2023,1,2), date(2023,1,3), date(2023,1,4), date(2023,1,5),
-                 date(2023,1,6), date(2023,1,7), date(2023,1,8), date(2023,1,9), date(2023,1,10)],
-        'bank': ['Bank A', 'Bank B', 'Bank A', 'Bank C', 'Bank A', 'Bank A', 'Bank B', 'Bank C', 'Bank A', 'Bank B'],
-        'sentiment_label': ['NEGATIVE', 'NEUTRAL', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'POSITIVE', 'POSITIVE', 'NEGATIVE', 'NEGATIVE', 'NEUTRAL'],
-        'sentiment_score': [0.95, 0.60, 0.98, 0.92, 0.75, 0.99, 0.88, 0.90, 0.96, 0.55],
+                 date(2023,1,6), date(2023,1,7), date(2023,1,8)],
+        'bank': ['Bank A', 'Bank B', 'Bank A', 'Bank C', 'Bank A', 'Bank A', 'Bank B', 'Bank C'],
+        'sentiment_label': ['NEGATIVE', 'NEUTRAL', 'POSITIVE', 'NEGATIVE', 'POSITIVE', 'POSITIVE', 'NEGATIVE', 'NEUTRAL'],
+        'sentiment_score': [0.95, 0.60, 0.98, 0.92, 0.75, 0.99, 0.90, 0.55],
         'identified_themes': [
-            'Account Access Issues, User Interface & Experience', # Matches login, crashes, UI
-            'Transaction Performance, User Interface & Experience', # Matches transfer, UI
-            'Customer Support', # Matches customer support
-            'Account Access Issues', # Matches access account, password reset
-            'Feature Requests', # Matches budgeting feature
-            'User Interface & Experience', # Matches UI
-            'Transaction Performance', # Matches transactions fast
-            'Customer Support', # Matches terrible support
-            'Account Access Issues, Security Concerns', # Matches fingerprint login, security
-            'Transaction Performance, Feature Requests' # Matches transfer, new feature
+            'Account Access Issues, Bug/Crash/Performance, User Interface & Experience',
+            'Transaction Performance, User Interface & Experience',
+            'Customer Support',
+            'Account Access Issues',
+            'Feature Requests',
+            'User Interface & Experience, Security Concerns',
+            'Transaction Performance, Bug/Crash/Performance',
+            'Feature Requests'
         ],
-        'reviewId': [f'id{i}' for i in range(10)],
-        'userName': [f'User{i}' for i in range(10)],
-        'appVersion': ['1.0'] * 10,
-        'source': ['Google Play Store'] * 10
+        'reviewId': [f'id{i}' for i in range(8)],
+        'userName': [f'User{i}' for i in range(8)],
+        'appVersion': ['1.0'] * 8,
+        'source': ['Google Play Store'] * 8
     }
     dummy_df = pd.DataFrame(dummy_data)
 

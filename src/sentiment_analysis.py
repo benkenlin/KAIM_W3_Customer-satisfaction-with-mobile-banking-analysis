@@ -35,25 +35,26 @@ def get_sentiment(text: str) -> dict:
         return {'label': 'NEUTRAL', 'score': 0.5}
 
     try:
-        # The distilbert model typically gives 'POSITIVE' or 'NEGATIVE'.
-        # We introduce a 'neutral' category based on score threshold.
-        # Adjust thresholds as needed based on model's behavior.
+        # The distilbert-base-uncased-finetuned-sst-2-english model is fine-tuned
+        # on a dataset (SST-2) that primarily yields 'POSITIVE' or 'NEGATIVE' labels.
+        # To get 'NEUTRAL', we use a heuristic based on the confidence score.
         results = sentiment_classifier(text, top_k=2) # Get top 2 scores to check confidence
         
         # Sort results by score (descending) to ensure we pick the most confident one
         results.sort(key=lambda x: x['score'], reverse=True)
         
-        # Consider a "neutral" threshold. If the highest score is below this, it's neutral.
-        # This needs careful tuning. For distilbert-sst2, it's usually high confidence.
-        # A simpler approach for binary models is to make 'neutral' if confidence is low.
-        high_confidence_threshold = 0.95 # If score is below this, it's less confident
-        
         best_result = results[0]
         label = best_result['label']
         score = best_result['score']
 
-        if score < high_confidence_threshold:
-            # If the best score is not highly confident, consider it neutral
+        # ADJUSTED HEURISTIC for 'NEUTRAL':
+        # Lowering this threshold will classify more reviews as POSITIVE/NEGATIVE
+        # If the highest confidence score for POS or NEG is below this, it's considered NEUTRAL.
+        # A model fine-tuned on SST-2 is typically very confident, so a slightly lower threshold
+        # might better reflect genuine ambiguity vs. low confidence.
+        neutral_threshold = 0.55 # Previously 0.6. Adjusted to make it less "neutral" by default.
+
+        if score < neutral_threshold:
             return {'label': 'NEUTRAL', 'score': score}
         else:
             return {'label': label, 'score': score}
@@ -61,6 +62,7 @@ def get_sentiment(text: str) -> dict:
     except Exception as e:
         logging.error(f"Error during sentiment analysis for text: '{text[:50]}...': {e}")
         return {'label': 'NEUTRAL', 'score': 0.5} # Fallback for processing errors
+
 
 def add_sentiment_scores(df: pd.DataFrame) -> pd.DataFrame:
     """

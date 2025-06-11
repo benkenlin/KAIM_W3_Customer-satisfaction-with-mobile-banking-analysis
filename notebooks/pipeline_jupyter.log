@@ -1,92 +1,92 @@
-2025-06-07 17:02:27,202 - INFO - Jupyter Notebook setup complete.
-2025-06-07 17:02:56,581 - ERROR - Error loading SpaCy model in preprocessing: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.. Please run 'python -m spacy download en_core_web_sm'
-2025-06-07 17:04:30,027 - ERROR - Error loading sentiment analysis model: No module named 'torch'
-2025-06-07 17:04:30,027 - WARNING - Sentiment analysis will use a placeholder if model failed to load.
-2025-06-07 17:04:30,410 - ERROR - Error loading SpaCy model in thematic analysis: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.. Please ensure 'python -m spacy download en_core_web_sm' has been run.
-2025-06-07 17:04:39,255 - INFO - All custom modules and configurations imported.
-2025-06-07 17:06:25,968 - INFO - --- Configuration Details ---
-2025-06-07 17:06:25,969 - INFO - Banks to scrape: ['CBE', 'BOA', 'DashenBank']
-2025-06-07 17:06:25,971 - INFO - Target reviews per bank: 400
-2025-06-07 17:06:25,974 - INFO - Database type: postgresql
-2025-06-07 17:06:25,976 - INFO - Database host: localhost
-2025-06-07 17:06:25,978 - INFO - ------------------------------
-2025-06-07 17:07:29,412 - INFO - 
+2025-06-11 03:12:17,997 - INFO - Jupyter Notebook setup complete.
+2025-06-11 03:13:02,177 - ERROR - Error loading SpaCy model in preprocessing: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.. Please run 'python -m spacy download en_core_web_sm'
+2025-06-11 03:15:19,672 - ERROR - Error loading sentiment analysis model: No module named 'torch'
+2025-06-11 03:15:19,672 - WARNING - Sentiment analysis will use a placeholder if model failed to load.
+2025-06-11 03:15:20,072 - ERROR - Error loading SpaCy model in thematic analysis: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.. Please ensure 'python -m spacy download en_core_web_sm' has been run.
+2025-06-11 03:15:37,368 - INFO - All custom modules and configurations imported.
+2025-06-11 03:18:24,709 - INFO - All custom modules and configurations imported.
+2025-06-11 03:18:37,978 - INFO - All custom modules and configurations imported.
+2025-06-11 03:18:41,922 - INFO - --- Configuration Details ---
+2025-06-11 03:18:41,924 - INFO - Banks to scrape: ['CBE', 'BOA', 'DashenBank']
+2025-06-11 03:18:41,926 - INFO - Target reviews per bank: 400
+2025-06-11 03:18:41,928 - INFO - Database type: oracle
+2025-06-11 03:18:41,929 - INFO - Database host: localhost
+2025-06-11 03:18:41,931 - INFO - ------------------------------
+2025-06-11 03:18:54,654 - INFO - 
 --- Task 1: Data Collection ---
-2025-06-07 17:07:29,413 - INFO - Attempting to scrape reviews for CBE (App ID: com.combanketh.mobilebanking)...
-2025-06-07 17:07:36,628 - INFO - Successfully scraped 400 reviews for CBE.
-2025-06-07 17:07:41,630 - INFO - Attempting to scrape reviews for BOA (App ID: com.boa.boaMobileBanking)...
-2025-06-07 17:07:42,970 - INFO - Successfully scraped 400 reviews for BOA.
-2025-06-07 17:07:47,984 - INFO - Attempting to scrape reviews for DashenBank (App ID: com.dashen.dashensuperapp)...
-2025-06-07 17:07:48,817 - INFO - Successfully scraped 400 reviews for DashenBank.
-2025-06-07 17:07:54,093 - INFO - Total raw reviews collected across all banks: 1200
-2025-06-07 17:07:54,301 - INFO - Raw reviews collected and saved: 1200 rows.
-2025-06-07 17:07:54,465 - INFO - 
+2025-06-11 03:18:54,655 - INFO - Attempting to scrape reviews for CBE (App ID: com.combanketh.mobilebanking)...
+2025-06-11 03:19:01,864 - INFO - Successfully scraped 400 reviews for CBE.
+2025-06-11 03:19:06,867 - INFO - Attempting to scrape reviews for BOA (App ID: com.boa.boaMobileBanking)...
+2025-06-11 03:19:08,174 - INFO - Successfully scraped 400 reviews for BOA.
+2025-06-11 03:19:13,176 - INFO - Attempting to scrape reviews for DashenBank (App ID: com.dashen.dashensuperapp)...
+2025-06-11 03:19:13,939 - INFO - Successfully scraped 400 reviews for DashenBank.
+2025-06-11 03:19:19,222 - INFO - Total raw reviews collected across all banks: 1200
+2025-06-11 03:19:19,416 - INFO - Raw reviews collected and saved: 1200 rows.
+2025-06-11 03:19:46,068 - INFO - 
 --- Task 1: Data Preprocessing ---
-2025-06-07 17:07:54,467 - INFO - Starting preprocessing for 1200 reviews...
-2025-06-07 17:07:54,660 - INFO - Removed 0 rows with missing review content. 1200 rows remaining.
-2025-06-07 17:07:54,684 - INFO - Removed duplicates. 1200 rows remaining.
-2025-06-07 17:07:54,762 - INFO - Dates normalized to YYYY-MM-DD format.
-2025-06-07 17:07:54,897 - INFO - Missing/empty review_text after preprocessing: 4.17%
-2025-06-07 17:07:54,899 - INFO - KPI met: Less than 5% missing or empty review text after preprocessing.
-2025-06-07 17:07:54,900 - INFO - Preprocessing complete. Final DataFrame shape: (1200, 9)
-2025-06-07 17:07:54,914 - INFO - Processed reviews saved: 1200 rows.
-2025-06-07 17:08:09,302 - INFO - 
---- Task 1: Data Collection ---
-2025-06-07 17:08:09,307 - INFO - Attempting to scrape reviews for CBE (App ID: com.combanketh.mobilebanking)...
-2025-06-07 17:08:15,635 - INFO - Successfully scraped 400 reviews for CBE.
-2025-06-07 17:08:20,640 - INFO - Attempting to scrape reviews for BOA (App ID: com.boa.boaMobileBanking)...
-2025-06-07 17:08:21,935 - INFO - Successfully scraped 400 reviews for BOA.
-2025-06-07 17:08:26,943 - INFO - Attempting to scrape reviews for DashenBank (App ID: com.dashen.dashensuperapp)...
-2025-06-07 17:08:28,001 - INFO - Successfully scraped 400 reviews for DashenBank.
-2025-06-07 17:08:33,005 - INFO - Total raw reviews collected across all banks: 1200
-2025-06-07 17:08:33,021 - INFO - Raw reviews collected and saved: 1200 rows.
-2025-06-07 17:08:41,821 - INFO - 
---- Task 1: Data Preprocessing ---
-2025-06-07 17:08:41,824 - INFO - Starting preprocessing for 1200 reviews...
-2025-06-07 17:08:41,828 - INFO - Removed 0 rows with missing review content. 1200 rows remaining.
-2025-06-07 17:08:41,831 - INFO - Removed duplicates. 1200 rows remaining.
-2025-06-07 17:08:41,844 - INFO - Dates normalized to YYYY-MM-DD format.
-2025-06-07 17:08:41,877 - INFO - Missing/empty review_text after preprocessing: 4.17%
-2025-06-07 17:08:41,877 - INFO - KPI met: Less than 5% missing or empty review text after preprocessing.
-2025-06-07 17:08:41,877 - INFO - Preprocessing complete. Final DataFrame shape: (1200, 9)
-2025-06-07 17:08:41,911 - INFO - Processed reviews saved: 1200 rows.
-2025-06-07 17:09:45,269 - INFO - 
+2025-06-11 03:19:46,071 - INFO - Starting preprocessing for 1200 reviews...
+2025-06-11 03:19:46,172 - INFO - Removed 0 rows with missing review content. 1200 rows remaining.
+2025-06-11 03:19:46,239 - INFO - Removed duplicates. 1200 rows remaining.
+2025-06-11 03:19:46,345 - INFO - Dates normalized to YYYY-MM-DD format.
+2025-06-11 03:19:46,438 - INFO - Missing/empty review_text after preprocessing: 4.00%
+2025-06-11 03:19:46,447 - INFO - KPI met: Less than 5% missing or empty review text after preprocessing.
+2025-06-11 03:19:46,450 - INFO - Preprocessing complete. Final DataFrame shape: (1200, 9)
+2025-06-11 03:19:46,469 - INFO - Processed reviews saved: 1200 rows.
+2025-06-11 03:20:04,819 - INFO - 
 --- Task 2: Sentiment Analysis ---
-2025-06-07 17:09:45,272 - INFO - Starting sentiment analysis for 1200 reviews...
-2025-06-07 17:09:45,290 - INFO - Sentiment analysis complete. 0.00% of reviews processed (non-default sentiment).
-2025-06-07 17:09:45,292 - WARNING - KPI NOT met: Less than 90% of reviews processed for sentiment (excluding default neutral).
-2025-06-07 17:09:45,294 - INFO - Sentiment analysis complete.
-2025-06-07 17:10:05,743 - INFO - Preparing text for Thematic Analysis (Tokenization & Lemmatization)...
-2025-06-07 17:10:22,791 - INFO - 
+2025-06-11 03:20:04,822 - INFO - Starting sentiment analysis for 1200 reviews...
+2025-06-11 03:20:04,839 - INFO - Sentiment analysis complete. 0.00% of reviews processed (non-default sentiment).
+2025-06-11 03:20:04,841 - WARNING - KPI NOT met: Less than 90% of reviews processed for sentiment (excluding default neutral).
+2025-06-11 03:20:04,842 - INFO - Sentiment analysis complete.
+2025-06-11 03:21:04,607 - INFO - Preparing text for Thematic Analysis (Tokenization & Lemmatization)...
+2025-06-11 03:21:35,777 - INFO - 
 --- Task 2: Thematic Analysis ---
-2025-06-07 17:10:22,792 - INFO - Extracting keywords using TF-IDF...
-2025-06-07 17:10:22,886 - WARNING - Could not extract keywords (e.g., all docs too short, or no terms left after filtering): empty vocabulary; perhaps the documents only contain stop words
-2025-06-07 17:10:22,886 - INFO - Top 10 Keywords extracted: []
-2025-06-07 17:10:22,891 - INFO - Assigning themes to reviews...
-2025-06-07 17:10:23,036 - INFO - Theme assignment complete.
-2025-06-07 17:10:23,036 - INFO - Thematic analysis complete.
-2025-06-07 17:11:24,004 - INFO - 
+2025-06-11 03:21:35,779 - INFO - Extracting keywords using TF-IDF...
+2025-06-11 03:21:35,857 - WARNING - Could not extract keywords (e.g., all docs too short, or no terms left after filtering): empty vocabulary; perhaps the documents only contain stop words
+2025-06-11 03:21:35,866 - INFO - Top 10 Keywords extracted: []
+2025-06-11 03:21:35,866 - INFO - Assigning themes to reviews...
+2025-06-11 03:21:36,046 - INFO - Theme assignment complete.
+2025-06-11 03:21:36,046 - INFO - Thematic analysis complete.
+2025-06-11 03:44:21,753 - INFO - 
+--- Task 1: Data Preprocessing ---
+2025-06-11 03:44:21,756 - INFO - Starting preprocessing for 1200 reviews...
+2025-06-11 03:44:21,764 - INFO - Removed 0 rows with missing review content. 1200 rows remaining.
+2025-06-11 03:44:21,767 - INFO - Removed duplicates. 1200 rows remaining.
+2025-06-11 03:44:21,781 - INFO - Dates normalized to YYYY-MM-DD format.
+2025-06-11 03:44:21,825 - INFO - Missing/empty review_text after preprocessing: 4.00%
+2025-06-11 03:44:21,826 - INFO - KPI met: Less than 5% missing or empty review text after preprocessing.
+2025-06-11 03:44:21,827 - INFO - Preprocessing complete. Final DataFrame shape: (1200, 9)
+2025-06-11 03:44:21,848 - INFO - Processed reviews saved: 1200 rows.
+2025-06-11 03:53:50,628 - INFO - 
 --- Task 3: Storing Data in Database ---
-2025-06-07 17:11:24,006 - ERROR - An unexpected error occurred during postgresql connection: 'DB_NAME'
-2025-06-07 17:11:24,009 - ERROR - Database connection failed. Skipping database operations.
-2025-06-07 17:12:17,378 - INFO - 
+2025-06-11 03:53:51,064 - INFO - Attempting to connect to Oracle database at localhost:1521...
+2025-06-11 03:54:29,236 - ERROR - SQLAlchemy error connecting to oracle database: (cx_Oracle.DatabaseError) ORA-01017: invalid username/password; logon denied
+(Background on this error at: https://sqlalche.me/e/14/4xp6)
+2025-06-11 03:54:29,236 - ERROR - Database connection failed. Skipping database operations.
+2025-06-11 04:04:52,974 - INFO - 
+--- Task 3: Storing Data in Database ---
+2025-06-11 04:04:52,975 - INFO - Attempting to connect to Oracle database at localhost:1521...
+2025-06-11 04:04:55,023 - ERROR - SQLAlchemy error connecting to oracle database: (cx_Oracle.DatabaseError) ORA-01017: invalid username/password; logon denied
+(Background on this error at: https://sqlalche.me/e/14/4xp6)
+2025-06-11 04:04:55,025 - ERROR - Database connection failed. Skipping database operations.
+2025-06-11 04:05:02,697 - INFO - 
 --- Task 4: Generating Insights and Recommendations ---
-2025-06-07 17:12:17,684 - INFO - Generated sentiment summary per bank.
-2025-06-07 17:12:17,698 - INFO - 
+2025-06-11 04:05:13,296 - INFO - Generated sentiment summary per bank.
+2025-06-11 04:05:13,634 - INFO - 
 Sentiment Summary (aggregated by bank and sentiment):
             mean_POSITIVE  mean_NEUTRAL  mean_NEGATIVE  count_POSITIVE  count_NEUTRAL  count_NEGATIVE
 bank                                                                                                 
 BOA                   NaN           0.5            NaN               0            400               0
 CBE                   NaN           0.5            NaN               0            400               0
 DashenBank            NaN           0.5            NaN               0            400               0
-2025-06-07 17:12:18,271 - INFO - Sentiment distribution plot saved to reports/sentiment_distribution.png
-2025-06-07 17:12:18,682 - INFO - Sentiment by bank plot saved to reports/sentiment_by_bank.png
-2025-06-07 17:12:19,689 - INFO - Themes by bank plot saved to reports/themes_by_bank.png
-2025-06-07 17:12:19,689 - INFO - Generating actionable recommendations...
-2025-06-07 17:12:19,709 - INFO - Recommendations generated.
-2025-06-07 17:12:19,709 - INFO - 
+2025-06-11 04:06:02,992 - INFO - Sentiment distribution plot saved to reports/sentiment_distribution.png
+2025-06-11 04:06:06,526 - INFO - Sentiment by bank plot saved to reports/sentiment_by_bank.png
+2025-06-11 04:06:18,366 - INFO - Themes by bank plot saved to reports/themes_by_bank.png
+2025-06-11 04:06:18,369 - INFO - Generating actionable recommendations...
+2025-06-11 04:06:18,380 - INFO - Recommendations generated.
+2025-06-11 04:06:18,395 - INFO - 
 Actionable Recommendations:
-2025-06-07 17:12:19,712 - INFO - --- Recommendations for CBE ---
+2025-06-11 04:06:18,397 - INFO - --- Recommendations for CBE ---
 Overall Sentiment: 0.0% Positive, 0.0% Negative Reviews.
 
 Few to no negative reviews, focus on maintaining quality.
@@ -96,7 +96,7 @@ General Recommendation:
 - Prioritize development efforts based on the severity and frequency of reported pain points.
 - Engage with users who leave critical reviews to understand their issues better and demonstrate responsiveness.
 
-2025-06-07 17:12:19,713 - INFO - --- Recommendations for BOA ---
+2025-06-11 04:06:18,399 - INFO - --- Recommendations for BOA ---
 Overall Sentiment: 0.0% Positive, 0.0% Negative Reviews.
 
 Few to no negative reviews, focus on maintaining quality.
@@ -106,7 +106,7 @@ General Recommendation:
 - Prioritize development efforts based on the severity and frequency of reported pain points.
 - Engage with users who leave critical reviews to understand their issues better and demonstrate responsiveness.
 
-2025-06-07 17:12:19,716 - INFO - --- Recommendations for DashenBank ---
+2025-06-11 04:06:18,399 - INFO - --- Recommendations for DashenBank ---
 Overall Sentiment: 0.0% Positive, 0.0% Negative Reviews.
 
 Few to no negative reviews, focus on maintaining quality.
@@ -116,6 +116,6 @@ General Recommendation:
 - Prioritize development efforts based on the severity and frequency of reported pain points.
 - Engage with users who leave critical reviews to understand their issues better and demonstrate responsiveness.
 
-2025-06-07 17:12:19,728 - INFO - Recommendations saved to reports/recommendations.txt
-2025-06-07 17:12:19,731 - INFO - 
+2025-06-11 04:06:18,460 - INFO - Recommendations saved to reports/recommendations.txt
+2025-06-11 04:06:18,524 - INFO - 
 --- Jupyter Notebook Pipeline Execution Complete ---
